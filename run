@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+# vars
+DATADIR=${DATADIR:-/data}
+TIMEOUT=${TIMEOUT:-86400}
+
+
+#verify perms
+chmod 600 /root/.ssh/*
+
+backup_and_wait() {
+    while true
+        do
+            /usr/local/bin/bitbucket-backup -l ${DATADIR} "$@"
+            sleep $TIMEOUT
+        done
+}
+
+backup_and_wait "$@"
+
+wait
