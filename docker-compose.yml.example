@@ -1,0 +1,8 @@
+bitbucketsync:
+    image: inanimate/rpi-bbbackup:latest
+    environment:
+        - TIMEOUT=600
+    command: -k 3Fr7Osyyaxg4fGWT9t -s dgHyPY8rzjbAnYYxQPhPn6ULVKzyefuu --mirror
+    volumes:
+        - /mnt/ext_drive/bitbucket_repositories:/data
+        - /home/user/.ssh/id_rsa.bitbucket:/root/.ssh/id_rsa
